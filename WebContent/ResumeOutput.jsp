@@ -8,11 +8,9 @@
 </head>
 <body>
 Education
-${Degree}
 <br>
-${School}
-<br>
-${Year}
+${Str}
+
 <br>
 <br>
 Work

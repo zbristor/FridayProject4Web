@@ -25,27 +25,15 @@ public class EducationServlet extends HttpServlet {
         // TODO Auto-generated constructor stub
     }
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		String nextURL="/WorkServlet";
-		
 		HttpSession session = request.getSession();
-		ArrayList<String> eduArray = new ArrayList<String>();
-		session.setAttribute("EduArray", eduArray);
-		ArrayList<String> workArray = new ArrayList<String>();
-		session.setAttribute("WorkArray", workArray);
-		ArrayList<String> skillArray = new ArrayList<String>();
-		session.setAttribute("SkillArray", skillArray);
-		
-		String firstName = request.getParameter("FirstName");
-		session.setAttribute("FirstName", firstName);
-		String lastName = request.getParameter("LastName");
-		session.setAttribute("LastName", lastName);
-		String email = request.getParameter("Email");
-		session.setAttribute("Email", email);
-		
-		
+		String nextURL="/WorkServlet";
+		String firstName = session.getAttribute("FirstName").toString();
+		String lastName = session.getAttribute("LastName").toString();
+		String email = session.getAttribute("Email").toString();
+		ArrayList<Education> eduArray = (ArrayList<Education>) session.getAttribute("EduArray");
+		ArrayList<String> workArray = (ArrayList<String>) session.getAttribute("WorkArray");
+		ArrayList<String> skillArray = (ArrayList<String>) session.getAttribute("SkillArray");
 		Person p = new Person(firstName, lastName, email, eduArray, workArray, skillArray);
-		
 		String degree = request.getParameter("Degree");
 		request.setAttribute("Degree", degree);
 		String school = request.getParameter("School");
@@ -54,7 +42,8 @@ public class EducationServlet extends HttpServlet {
 		request.setAttribute("Year", year);
 		String decision = request.getParameter("Input");
 		request.setAttribute("eduInput", decision);
-		p.addEdu(degree+" "+school+" "+year);
+		Education e = new Education(degree, school, year);
+		p.addEdu(e);
 		
 		if(decision.equals("yes"))
 		{

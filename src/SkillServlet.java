@@ -46,23 +46,22 @@ public class SkillServlet extends HttpServlet {
 		String lname = session.getAttribute("LastName").toString();
 		String email = session.getAttribute("Email").toString();
 		
-		ArrayList<String> eduArray = (ArrayList<String>) session.getAttribute("EduArray");
+		ArrayList<Education> eduArray = (ArrayList<Education>) session.getAttribute("EduArray");
 		ArrayList<String> workArray = (ArrayList<String>) session.getAttribute("WorkArray");
-		
+		String str = "";
+		Person p = new Person(fname, lname, email, eduArray, workArray, skillArray);
 		for(int i=0; i<eduArray.size(); i++)
 		{
-			String[] eduSplit = eduArray.get(i).split(" ");
-			String degree = eduSplit[0];
-			session.setAttribute("Degree", degree);
-			String school = eduSplit[1];
-			session.setAttribute("School", school);
-			String year = eduSplit[2];
-			session.setAttribute("Year", year);
+			String degree = eduArray.get(i).getDegree();
+			String school = eduArray.get(i).getSchool();
+			String year = eduArray.get(i).getYear();
+			String comb = degree+"\n"+school+", "+year+"\n";
+			str=str+comb;
 		}
-		
+		session.setAttribute("Str", str);
 		
 		getServletContext().getRequestDispatcher(nextURL).forward(request, response);
-		Person p = new Person(fname, lname, email, eduArray, workArray, skillArray);
+		
 
 		
 

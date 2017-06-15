@@ -5,10 +5,10 @@ public class Person {
 	private String fname;
 	private String lname;
 	private String email;
-	private ArrayList<String> eduArray = new ArrayList<String>();
+	private ArrayList<Education> eduArray = new ArrayList<Education>();
 	private ArrayList<String> workArray = new ArrayList<String>();
 	private ArrayList<String> skillArray = new ArrayList<String>();
-public Person(String fname, String lname, String email, ArrayList<String> eduArray, ArrayList<String> workArray, ArrayList<String> skillArray)
+public Person(String fname, String lname, String email, ArrayList<Education> eduArray, ArrayList<String> workArray, ArrayList<String> skillArray)
 {
 	this.fname=fname;
 	this.lname=lname;
@@ -35,7 +35,7 @@ public String getEmail() {
 public void setEmail(String email) {
 	this.email = email;
 }
-public void addEdu(String e){
+public void addEdu(Education e){
 	eduArray.add(e);
 }
 public void addWork(String w)
