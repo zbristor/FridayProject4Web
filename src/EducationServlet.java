@@ -13,7 +13,7 @@ import javax.servlet.http.HttpSession;
 /**
  * Servlet implementation class ResumeServlet
  */
-@WebServlet("/ResumeServlet")
+@WebServlet("/EducationServlet")
 public class EducationServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -37,14 +37,14 @@ public class EducationServlet extends HttpServlet {
 		session.setAttribute("SkillArray", skillArray);
 		
 		String firstName = request.getParameter("FirstName");
-		request.setAttribute("LastName", firstName);
+		session.setAttribute("FirstName", firstName);
 		String lastName = request.getParameter("LastName");
-		request.setAttribute("LastName", lastName);
+		session.setAttribute("LastName", lastName);
 		String email = request.getParameter("Email");
-		request.setAttribute("Email", email);
+		session.setAttribute("Email", email);
 		
 		
-		Person p = new Person(firstName, lastName, eduArray, workArray, skillArray);
+		Person p = new Person(firstName, lastName, email, eduArray, workArray, skillArray);
 		
 		String degree = request.getParameter("Degree");
 		request.setAttribute("Degree", degree);
@@ -54,14 +54,15 @@ public class EducationServlet extends HttpServlet {
 		request.setAttribute("Year", year);
 		String decision = request.getParameter("Input");
 		request.setAttribute("eduInput", decision);
-		p.addEdu(degree+"/n"+school+", "+year);
+		p.addEdu(degree+" "+school+" "+year);
+		
 		if(decision.equals("yes"))
 		{
-			response.sendRedirect("EducationInput.html");
+			nextURL="/EducationInput.html";
 		}
 		else if(decision.equals("no"))
 		{
-			response.sendRedirect("WorkInput.html");
+			nextURL="/WorkInput.html";
 		}
 		
 		getServletContext().getRequestDispatcher(nextURL).forward(request, response);

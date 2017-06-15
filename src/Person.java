@@ -8,13 +8,13 @@ public class Person {
 	private ArrayList<String> eduArray = new ArrayList<String>();
 	private ArrayList<String> workArray = new ArrayList<String>();
 	private ArrayList<String> skillArray = new ArrayList<String>();
-public Person(String fname, String lname, ArrayList<String> eduArray, ArrayList<String> workArray, ArrayList<String> skillArray)
+public Person(String fname, String lname, String email, ArrayList<String> eduArray, ArrayList<String> workArray, ArrayList<String> skillArray)
 {
 	this.fname=fname;
 	this.lname=lname;
 	this.eduArray=eduArray;
-	this.workArray=eduArray;
-	this.skillArray=eduArray;
+	this.workArray=workArray;
+	this.skillArray=skillArray;
 }
 
 public String getFname() {

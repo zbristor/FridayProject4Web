@@ -8,16 +8,15 @@
 </head>
 <body>
 Education
+${Degree}
 <br>
-${Education}
+${School}
+<br>
+${Year}
+<br>
 <br>
 Work
 <br>
-${Work}
-<br>
-Skills
-<br>
-${Skills}
 
 </body>
 </html>
