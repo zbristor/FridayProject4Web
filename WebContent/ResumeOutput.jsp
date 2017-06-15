@@ -7,9 +7,17 @@
 <title>Resume</title>
 </head>
 <body>
-${FirstName}
-${LastName}
-${Email}
+Education
+<br>
+${Education}
+<br>
+Work
+<br>
+${Work}
+<br>
+Skills
+<br>
+${Skills}
 
 </body>
 </html>

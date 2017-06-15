@@ -14,16 +14,21 @@ Last Name: <input type="text" name= "LastName" />
 Email: <input type="text" name= "Email" />
 <br> 
 <h4>Education</h4>
+Enter your degree, the school, and the year on three separate lines followed by a new line after each complete entry. 
 Degree: <input type="text" name= "Degree" />
 <br>
 School: <input type="text" name= "School" />
 <br>
 Year: <input type="text" name= "Year" />
 <br>
-</form>
- <!-- <button onclick="myFunction()">Add Education</button>  -->
+Would you like to enter another school experience? (yes/no)
+Decision: <input type="text" name= "Input" />
+ <!--  <textarea rows="40" name= education cols="30">
+ <button onclick="myFunction()">Add Education</button>  -->
 <br>
 <h4>Work</h4>
+Enter your position, the company, start date, end date, and any duties in the following format
+<br>
 Position: <input type="text" name= "Position" />
 <br>
 Company: <input type="text" name= "Company" />
@@ -34,12 +39,27 @@ End Date: <input type="text" name="EndDate" />
 <br>
 Duties: <input type="text" name="Duties" />
 <br>
-<button> Add Work </button>
-<br>
 <h4>Skill</h4>
-Skill: <input type="text" name="Skills" />
+
+
+<!-- 
+<br>  <textarea rows="50" name="work" cols="30">
+Position
+Company, start date - end date
+-duty 1
+-duty 2
+</textarea> -->
+<!--<button> Add Work </button>  -->
 <br>
-<button> Add Skill </button>
+
+Enter each of your skills in the following format
+<br>
+<textarea rows="20" name="skills" cols="30">
+Skill, proficiency level
+for example,
+PHP, very good
+</textarea>
+<!--<button> Add Skill </button>  -->
 <br>
 <input type ="submit" value = "Submit">
 </form>
