@@ -44,7 +44,7 @@ public class WorkServlet extends HttpServlet {
 		{
 			response.sendRedirect("SkillInput.html");
 		}
-		getServletContext().getRequestDispatcher(nextURL).forward(request, response);
+		//getServletContext().getRequestDispatcher(nextURL).forward(request, response);
 	}
 
 }
