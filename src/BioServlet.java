@@ -30,9 +30,9 @@ public class BioServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		ArrayList<Education> eduArray = new ArrayList<Education>();
 		session.setAttribute("EduArray", eduArray);
-		ArrayList<String> workArray = new ArrayList<String>();
+		ArrayList<Work> workArray = new ArrayList<Work>();
 		session.setAttribute("WorkArray", workArray);
-		ArrayList<String> skillArray = new ArrayList<String>();
+		ArrayList<Skills> skillArray = new ArrayList<Skills>();
 		session.setAttribute("SkillArray", skillArray);
 		
 		String firstName = request.getParameter("FirstName");
@@ -41,6 +41,7 @@ public class BioServlet extends HttpServlet {
 		session.setAttribute("LastName", lastName);
 		String email = request.getParameter("Email");
 		session.setAttribute("Email", email);
+		Person p = new Person(firstName, lastName, email, eduArray, workArray, skillArray);
 		
 		getServletContext().getRequestDispatcher(nextURL).forward(request, response);
 	}

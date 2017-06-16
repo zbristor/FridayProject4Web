@@ -40,15 +40,20 @@ public class WorkServlet extends HttpServlet {
 		request.setAttribute("Duties", duties);
 		String decision = request.getParameter("Input");
 		request.setAttribute("WorkInput",decision);
-		String endWork = position +" "+ company + " "+sDate+" "+eDate+" "+duties;
-		ArrayList<String> workArray = (ArrayList<String>) session.getAttribute("WorkArray");
-		workArray.add(endWork);
+		
+		String firstName = session.getAttribute("FirstName").toString();
+		String lastName = session.getAttribute("LastName").toString();
+		String email = session.getAttribute("Email").toString();
+		ArrayList<Education> eduArray = (ArrayList<Education>) session.getAttribute("EduArray");
+		ArrayList<Work> workArray = (ArrayList<Work>) session.getAttribute("WorkArray");
+		ArrayList<Skills> skillArray = (ArrayList<Skills>) session.getAttribute("SkillArray");
+		Person p = new Person(firstName, lastName, email, eduArray, workArray, skillArray);
+		Work w = new Work(position, company, sDate, eDate, duties);
+		p.addWork(w);
 		if(decision.equals("yes"))
 		{
 			nextURL="/WorkInput.html";
 		}
-		//Person p = new Person(session.getAttribute("FirstName").toString(), session.getAttribute("LastName").toString(),session.getAttribute("Email").toString(), 
-				//session.getAttribute("EduArray").toString(), session.getAttribute("WorkArray").toString(), session.getAttribute("SkillArray").toString());
 		else if(decision.equals("no"))
 		{
 			nextURL="/SkillInput.html";

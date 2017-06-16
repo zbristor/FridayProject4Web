@@ -31,9 +31,10 @@ public class EducationServlet extends HttpServlet {
 		String lastName = session.getAttribute("LastName").toString();
 		String email = session.getAttribute("Email").toString();
 		ArrayList<Education> eduArray = (ArrayList<Education>) session.getAttribute("EduArray");
-		ArrayList<String> workArray = (ArrayList<String>) session.getAttribute("WorkArray");
-		ArrayList<String> skillArray = (ArrayList<String>) session.getAttribute("SkillArray");
+		ArrayList<Work> workArray = (ArrayList<Work>) session.getAttribute("WorkArray");
+		ArrayList<Skills> skillArray = (ArrayList<Skills>) session.getAttribute("SkillArray");
 		Person p = new Person(firstName, lastName, email, eduArray, workArray, skillArray);
+		
 		String degree = request.getParameter("Degree");
 		request.setAttribute("Degree", degree);
 		String school = request.getParameter("School");

@@ -6,9 +6,9 @@ public class Person {
 	private String lname;
 	private String email;
 	private ArrayList<Education> eduArray = new ArrayList<Education>();
-	private ArrayList<String> workArray = new ArrayList<String>();
-	private ArrayList<String> skillArray = new ArrayList<String>();
-public Person(String fname, String lname, String email, ArrayList<Education> eduArray, ArrayList<String> workArray, ArrayList<String> skillArray)
+	private ArrayList<Work> workArray = new ArrayList<Work>();
+	private ArrayList<Skills> skillArray = new ArrayList<Skills>();
+public Person(String fname, String lname, String email, ArrayList<Education> eduArray, ArrayList<Work> workArray, ArrayList<Skills> skillArray)
 {
 	this.fname=fname;
 	this.lname=lname;
@@ -38,11 +38,11 @@ public void setEmail(String email) {
 public void addEdu(Education e){
 	eduArray.add(e);
 }
-public void addWork(String w)
+public void addWork(Work w)
 {
 	workArray.add(w);
 }
-public void addSkill(String s)
+public void addSkill(Skills s)
 {
 	skillArray.add(s);
 }
