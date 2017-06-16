@@ -11,12 +11,9 @@
 <br>
 ${Bio}
 <br>
-<br>
 Education
 <br>
 ${eduStr}
-<br>
-Work
 <br>
 ${wStr}
 <br>

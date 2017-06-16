@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Work {
@@ -7,6 +8,7 @@ private String company;
 private String start;
 private String end;
 private String duties;
+private ArrayList<String> duty;
 Scanner sc = new Scanner(System.in);
 public Work()
 {
@@ -21,21 +23,21 @@ public Work(String position, String company, String start, String end, String du
 	this.duties=duties;
 }
 /*
-public String getWork()
+public Work(String position, String company, String start, String end, ArrayList<String> duty)
 {
-	System.out.println("Enter the position: ");
-	position=sc.nextLine();
-	System.out.println("Enter the company: ");
-	company=sc.nextLine();
-	System.out.println("Enter the start date: ");
-	start=sc.nextLine();
-	System.out.println("Enter the end date: ");
-	end=sc.nextLine();
-	System.out.println("Enter your duties: ");
-	duties=sc.nextLine();
-	return position+"/"+company+"/"+start+"/"+end+"/"+duties;
+	this.position=position;
+	this.company=company;
+	this.start=start;
+	this.end=end;
+	this.duty=duty;
 }
 */
+public ArrayList<String> getDuty() {
+	return duty;
+}
+public void setDuty(ArrayList<String> duty) {
+	this.duty = duty;
+}
 public String getPosition() {
 	return position;
 }

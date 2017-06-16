@@ -56,7 +56,7 @@ public class SkillServlet extends HttpServlet {
 		}
 		
 
-		String bio = fname +" "+lname+"<br>"+email;
+		String bio = fname +" "+lname+"<br>"+email+"<br>";
 		session.setAttribute("Bio", bio);
 		String eduStr = "";
 		
@@ -69,8 +69,9 @@ public class SkillServlet extends HttpServlet {
 			eduStr=eduStr+comb+"<br>";
 		}
 		session.setAttribute("eduStr", eduStr);
-		
 		String wStr ="";
+		if(workArray.size()>0)
+			wStr ="Work"+"<br>";
 		for(int j=0; j<workArray.size(); j++)
 		{
 			String position = workArray.get(j).getPosition();

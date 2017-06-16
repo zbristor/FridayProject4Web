@@ -53,6 +53,7 @@ public class WorkServlet extends HttpServlet {
 		ArrayList<Skills> skillArray = (ArrayList<Skills>) session.getAttribute("SkillArray");
 		Person p = new Person(firstName, lastName, email, eduArray, workArray, skillArray);
 		Work w = new Work(position, company, sDate, eDate, duties);
+		//Work work = new Work(position, company, sDate, eDate, duty);
 		p.addWork(w);
 		if(decision.equals("yes"))
 		{
