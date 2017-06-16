@@ -6,8 +6,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-@WebServlet(description = "Provides the user with a choice to skip adding work and to go straight to skills servlet", urlPatterns = { "/Choice" })
+@WebServlet("/ChoiceServlet")
+//@WebServlet(description = "Provides the user with a choice to skip adding work and to go straight to skills servlet", urlPatterns = { "/Choice" })
 public class ChoiceServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
