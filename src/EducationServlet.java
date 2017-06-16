@@ -1,6 +1,10 @@
 
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import javax.servlet.ServletException;
@@ -55,7 +59,34 @@ public class EducationServlet extends HttpServlet {
 			nextURL="/WorkInput.html";
 		}
 		
-		getServletContext().getRequestDispatcher(nextURL).forward(request, response);
+		Connection con = null;
+		PreparedStatement pstmt=null;
+		String sql = "insert into Education(Degree,School,Year)values(?,?,?)";
+		try{
+			Class.forName("com.mysql.jdbc.Driver");
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/Resume?"+ "user=root&password=password");
+            pstmt = con.prepareStatement(sql);
+            pstmt.setString(1, degree);
+            pstmt.setString(2, school);
+            pstmt.setString(3, year);
+            pstmt.executeUpdate();
+		
+	
+		}catch (SQLException f){
+			f.printStackTrace();
+		} catch (ClassNotFoundException f) {
+			f.printStackTrace();
+		}
+		finally {
+			try {
+				getServletContext().getRequestDispatcher(nextURL).forward(request, response);
+				pstmt.close();
+				con.close();
+			}catch(SQLException f){
+				f.printStackTrace();
+			}
+		}
+		//getServletContext().getRequestDispatcher(nextURL).forward(request, response);
 	
 	}
 
