@@ -96,12 +96,14 @@ public class SkillServlet extends HttpServlet {
 		ResultSet rs = null;
 		PreparedStatement pstmt=null;
 		//String norm = null;
-		String sql = "insert into Skills(SkillName)values(?)";
+		String sql = "insert into Skills(SkillName,PersonID)values(?,?)";
 		try{
 			Class.forName("com.mysql.jdbc.Driver");
             con = DriverManager.getConnection("jdbc:mysql://localhost:3306/Resume?"+ "user=root&password=password");
             pstmt = con.prepareStatement(sql);
             pstmt.setString(1, skill);
+            int parsedID = (int) session.getAttribute("personID");
+            pstmt.setInt(2, parsedID);
             pstmt.executeUpdate();
 		}catch (SQLException e){
 			e.printStackTrace();

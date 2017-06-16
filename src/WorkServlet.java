@@ -65,7 +65,7 @@ public class WorkServlet extends HttpServlet {
 		
 		Connection con = null;
 		PreparedStatement pstmt=null;
-		String sql = "insert into Work(Position,Company,StartTime,EndTime,Duty1)values(?,?,?,?,?)";
+		String sql = "insert into Work(Position,Company,StartTime,EndTime,Duty1,PersonID)values(?,?,?,?,?,?)";
 		try{
 			Class.forName("com.mysql.jdbc.Driver");
             con = DriverManager.getConnection("jdbc:mysql://localhost:3306/Resume?"+ "user=root&password=password");
@@ -75,6 +75,8 @@ public class WorkServlet extends HttpServlet {
             pstmt.setString(3, sDate);
             pstmt.setString(4, eDate);
             pstmt.setString(5, duties);
+            int parsedID = (int) session.getAttribute("personID");
+            pstmt.setInt(6, parsedID);
             pstmt.executeUpdate();
 		
 	

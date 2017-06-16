@@ -57,7 +57,7 @@ public class EducationServlet extends HttpServlet {
 		}
 		else if(decision.equals("no"))
 		{
-			nextURL="/WorkInput.html";
+			nextURL="/Choice.html";
 		}
 		Connection con = null;
 		PreparedStatement pstmt=null;
@@ -72,7 +72,6 @@ public class EducationServlet extends HttpServlet {
             pstmt.setString(2, school);
             pstmt.setString(3, year);
             int reParsedID = (int) session.getAttribute("personID");
-            System.out.println(reParsedID+"this is the parsed ID");
             pstmt.setInt(4, reParsedID);
             pstmt.executeUpdate();
 		

@@ -61,7 +61,6 @@ public class BioServlet extends HttpServlet {
             pstmt2.setString(1, session.getAttribute("Email").toString());
             pstmt2.setString(2, firstName);
             pstmt2.setString(3, lastName);
-            System.out.println("Are you getting here?");
             ResultSet s = pstmt2.executeQuery();
             s.next();
             String pID = s.getString("PersonID");
