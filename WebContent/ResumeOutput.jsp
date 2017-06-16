@@ -7,8 +7,10 @@
 <title>Resume</title>
 </head>
 <body>
+<h3>Resume</h3>
 <br>
 ${Bio}
+<br>
 <br>
 Education
 <br>
