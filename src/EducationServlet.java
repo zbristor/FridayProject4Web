@@ -50,6 +50,7 @@ public class EducationServlet extends HttpServlet {
 		Education e = new Education(degree, school, year);
 		p.addEdu(e);
 		
+
 		if(decision.equals("yes"))
 		{
 			nextURL="/EducationInput.html";
@@ -58,17 +59,21 @@ public class EducationServlet extends HttpServlet {
 		{
 			nextURL="/WorkInput.html";
 		}
-		
 		Connection con = null;
 		PreparedStatement pstmt=null;
-		String sql = "insert into Education(Degree,School,Year)values(?,?,?)";
+        
+		String sql = "insert into Education(Degree,School,Year,PersonID)values(?,?,?,?)";
 		try{
+			
 			Class.forName("com.mysql.jdbc.Driver");
             con = DriverManager.getConnection("jdbc:mysql://localhost:3306/Resume?"+ "user=root&password=password");
             pstmt = con.prepareStatement(sql);
             pstmt.setString(1, degree);
             pstmt.setString(2, school);
             pstmt.setString(3, year);
+            int reParsedID = (int) session.getAttribute("personID");
+            System.out.println(reParsedID+"this is the parsed ID");
+            pstmt.setInt(4, reParsedID);
             pstmt.executeUpdate();
 		
 	
@@ -86,6 +91,8 @@ public class EducationServlet extends HttpServlet {
 				f.printStackTrace();
 			}
 		}
+		
+		
 		//getServletContext().getRequestDispatcher(nextURL).forward(request, response);
 	
 	}

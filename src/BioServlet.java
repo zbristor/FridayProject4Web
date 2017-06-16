@@ -24,6 +24,11 @@ public class BioServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String nextURL = "/EducationInput.html";
 		HttpSession session = request.getSession();
+		
+		Connection con = null;
+		PreparedStatement pstmt=null;
+		PreparedStatement pstmt2=null;
+		
 		ArrayList<Education> eduArray = new ArrayList<Education>();
 		session.setAttribute("EduArray", eduArray);
 		ArrayList<Work> workArray = new ArrayList<Work>();
@@ -38,23 +43,34 @@ public class BioServlet extends HttpServlet {
 		String email = request.getParameter("Email");
 		session.setAttribute("Email", email);
 		Person p = new Person(firstName, lastName, email, eduArray, workArray, skillArray);
-		/*
-		p.setFname(firstName);
-		p.setLname(lastName);
-		p.setEmail(email);
-		*/
-		Connection con = null;
-		PreparedStatement pstmt=null;
-		String sql = "insert into Person(FirstName,LastName,Email)values(?,?,?);";
+
+		String sql = "insert into Person(FirstName,LastName,Email)values(?,?,?)";
+		String sql2 = "select PersonID from Person where Email=? and FirstName=? and LastName=?";
+		
 		try{
 			Class.forName("com.mysql.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/Resume?"+ "user=root&password=password");
-            pstmt = con.prepareStatement(sql);
-            pstmt.setString(1, firstName);
-            pstmt.setString(2, lastName);
-            pstmt.setString(3, email);
-            pstmt.executeUpdate();
+	        con = DriverManager.getConnection("jdbc:mysql://localhost:3306/Resume?"+ "user=root&password=password");
+           pstmt = con.prepareStatement(sql);
+           pstmt.setString(1, firstName);
+           pstmt.setString(2, lastName);
+           pstmt.setString(3, email);
+           pstmt.executeUpdate();
 	
+            //pstmt2=con.prepareStatement(sql2);
+            pstmt2 = con.prepareStatement(sql2);
+            pstmt2.setString(1, session.getAttribute("Email").toString());
+            pstmt2.setString(2, firstName);
+            pstmt2.setString(3, lastName);
+            System.out.println("Are you getting here?");
+            ResultSet s = pstmt2.executeQuery();
+            s.next();
+            String pID = s.getString("PersonID");
+            int parseID = Integer.parseInt(pID);
+            session.setAttribute("personID", parseID);
+            
+            
+
+            
 		}catch (SQLException e){
 			e.printStackTrace();
 		} catch (ClassNotFoundException e) {
